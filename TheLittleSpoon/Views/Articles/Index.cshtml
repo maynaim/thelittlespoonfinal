@@ -1,0 +1,53 @@
+﻿@model IEnumerable<TheLittleSpoon.Models.Article>
+
+@{
+    ViewData["Title"] = "Browse";
+    ViewData["Tab"] = "Browse";
+}
+<div class="row">
+    <h2>Browse all articles</h2>
+    <br />
+</div>
+    <div class="row">
+        <div class="col-9">         
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Header)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ArticleId)
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Header)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ArticleId)
+                            </td>
+                            <td>
+                                <a class="btn alert-warning" asp-action="Edit" asp-route-id="@item.ArticleId">Edit</a>
+                                <a class="btn alert-info" asp-action="Details" asp-route-id="@item.ArticleId">Details</a>
+                                <a class="btn alert-danger" asp-action="Delete" asp-route-id="@item.ArticleId">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-3">
+            <a class="btn btn-success" asp-action="Create">Create New</a>
+            <br />
+            <br />
+            <video controls="controls" autoplay="autoplay" style="Width:255px;Height:170px">
+                <source src="~/images/TheLittleSpoon%20CreateNew.mp4" type="video/mp4" />
+            </video>
+        </div>
+
+    </div>

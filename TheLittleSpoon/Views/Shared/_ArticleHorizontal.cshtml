@@ -1,0 +1,16 @@
+﻿@model TheLittleSpoon.Models.Article
+
+<div class="card flex-md-row mb-4 shadow-sm h-md-250">
+    <div class="card-body d-flex flex-column align-items-start" style="background-color: #f2eeee;">
+        <partial name="_CategoryBadge" model="@Model.Category" />
+        <h3 class="mb-0">
+            <a class="text-dark" asp-controller="Articles" asp-action="Details" asp-route-id="@Model.ArticleId">@Html.DisplayFor(model => model.Header)</a>
+        </h3>
+        <div class="mb-1 text-muted">@Html.DisplayFor(model => model.DateCreated)</div>
+        <p class="card-text mb-auto">@Html.DisplayFor(model => model.Summary)</p>
+        <a class="btn btn-sm btn-outline-secondary" asp-controller="Articles" asp-action="Details" asp-route-id="@Model.ArticleId">Read more...</a>
+    </div>
+    <a asp-controller="Articles" asp-action="Details" asp-route-id="@Model.ArticleId" class="bg-dark">
+        <img class="card-img-right flex-auto d-none d-lg-block" style="width: 400px; height: 250px;" src="@Html.DisplayFor(model => model.HomeImageUrl)">
+    </a>
+</div>

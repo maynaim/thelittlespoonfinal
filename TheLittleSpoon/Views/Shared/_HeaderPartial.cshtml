@@ -1,0 +1,45 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using TheLittleSpoon.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+        <header class="blog-header border shadow-sm" style="margin-bottom:1+5px">
+            <div class="container">
+                <div class="d-flex justify-content-between">
+                    <div class="p-2">
+                        @if (SignInManager.IsSignedIn(User))
+                {
+                        <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="btn-group btn-group-justified" role="group">
+                            <button type="submit" class="btn btn-outline-secondary">Log out</button>
+                            <a asp-controller="Categories" asp-action="Index" class="btn btn-outline-secondary">Categories</a>
+                            <a asp-controller="Articles" asp-action="Index" class="btn btn-outline-secondary">Recipes</a>
+                            <a asp-controller="Statisticss" asp-action="Index" class="btn btn-outline-secondary">Statistics</a>
+                        </form>
+                }
+                else
+                {
+                        <a class="btn btn-sm btn-outline-secondary" asp-area="" asp-controller="Account" asp-action="Login">Log in</a>
+                }
+                    </div>
+                    <div class="p-2 bd-highlight">
+
+                        <a class="text-muted" href="@Url.Action("Index", "Search")" style="vertical-align: super;">
+                            <svg xmlns="http://www.w3.org/2000/svg" style="vertical-align: sub;margin-top:5px" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-3">
+                                <circle cx="10.5" cy="10.5" r="7.5"></circle>
+                                <line x1="21" y1="21" x2="15.7" y2="15.7"></line>
+                            </svg>
+                        </a>
+
+                        @if (SignInManager.IsSignedIn(User))
+                {
+                        <span class="badge badge-success">ADMIN MODE</span>
+                }
+                else
+                {
+                      
+                }
+                    </div>
+                </div>
+            </div>
+        </header>

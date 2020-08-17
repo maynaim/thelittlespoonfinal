@@ -1,0 +1,242 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<br />
+<canvas id="loading-canvas" style="margin: auto; display: block"></canvas>
+<div id="home-page">
+
+    <br />
+    @{
+        var mainArticle = (Article)ViewData["MainArticle"];
+        if (mainArticle != null)
+        {
+            <!--Main featured article-->
+            <div class="card flex-md-row mb-4 box-shadow h-md-250 text-light bg-dark shadow">
+                <div class="card-body d-flex flex-column align-items-start">
+                    <strong class="d-inline-block mb-2 text-primary">
+                        <partial name="_CategoryBadge" model="@((Category)ViewData["MainArticleCategory"])" />
+                    </strong>
+                    <h3 class="mb-0">
+                        <a asp-controller="Articles" asp-action="Details" asp-route-id="@mainArticle.ArticleId" class="text-success">@mainArticle.Header</a>
+                    </h3>
+                    <div class="mb-1 text-muted">@mainArticle.DateCreated</div>
+                    <section class="main-article-content">
+                        <p class="card-text mb-auto" style="column-span: all"><strong>@mainArticle.Summary</strong></p>
+                    </section>
+                    <br />
+                    <a class="btn btn-sm btn-outline-secondary" asp-controller="Articles" asp-action="Details" asp-route-id="@mainArticle.ArticleId">Read more</a>
+                </div>
+                <a asp-controller="Articles" asp-action="Details" asp-route-id="@mainArticle.ArticleId">
+                    <img class="card-img-right flex-auto d-none d-md-block" style="width: 550px; height: auto;" src="@mainArticle.HomeImageUrl" data-holder-rendered="true" />
+                </a>
+            </div>
+        }
+    }
+
+            <div class="row no-gutters">
+                <div class="twitter-feed col-6 col-md-4">
+                    <a class="twitter-timeline" data-lang="he" data-width="300" data-height="2000" data-theme="light" href="https://twitter.com/WallaFood?ref_src=twsrc%5Etfw"></a>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-8">
+
+                    <div class="nav-scroller py-1 mb-2">
+                        <nav class="nav d-flex justify-content-between border rounded">
+                            @foreach (var c in (Dictionary<Category, List<Article>>)ViewData["Categories"])
+                            {
+                                <a asp-controller="Categories" asp-action="Details" asp-route-id="@c.Key.CategoryId" class="nav-link" style="">@c.Key.Name</a>
+                            }
+                        </nav>
+                    </div>
+
+                    <h3 class="pb-3 mb-4 font-italic border-bottom">Featured <small>The MUST READ articles</small></h3>
+                    <div class="row mb-2">
+                        <div class="col-md-10">
+                            @foreach (var article in ((List<Article>)ViewData["Featured"]))
+                            {
+                                <div class="col-md-12">
+                                    <partial name="_ArticleHorizontal" model="@article" />
+                                </div>
+                            }
+                        </div>
+
+                        <div class="col-md-2">
+                            <h3 class="pb-3 mb-4 font-italic border-bottom">Recent</h3>
+                            @foreach (Article ar in ((List<Article>)ViewData["Recent"]))
+                            {
+                                <div class="card">
+                                    <a asp-controller="Articles" asp-action="Details" asp-route-id="@ar.ArticleId">
+                                        <img src="@ar.HomeImageUrl" class="img-fluid img-thumbnail" data-toggle="tooltip" data-placement="right" data-html="true" title="<h4>@ar.Header</h4><p>@ar.Summary</p>" />
+                                    </a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                    @foreach (var c in (Dictionary<Category, List<Article>>)ViewData["Categories"])
+                    {
+                        var category = c.Key;
+
+                        <br />
+                        <h3 class="pb-3 mb-4 font-italic border-bottom">
+                            <a asp-controller="Categories" asp-action="Details" asp-route-id="@category.CategoryId" style="color: @category.HexColor !important;">
+                                @category.Name <small class="text-dark">@category.Description</small>
+                            </a>
+                        </h3>
+
+                        <div class="row">
+                            @foreach (Article article in c.Value)
+                            {
+                                <div class="col-md-offset-4">
+                                            <partial name="_ArticleVertical" model="article" />
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+
+            </div>
+</div>
+
+@section Scripts
+    {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(function () {
+                $("#home-page").hide();
+                $('[data-toggle="tooltip"]').tooltip();
+            });
+        });
+
+        particle_no = 25;
+
+        window.requestAnimFrame = (function () {
+            return window.requestAnimationFrame ||
+                window.webkitRequestAnimationFrame ||
+                window.mozRequestAnimationFrame ||
+                window.oRequestAnimationFrame ||
+                window.msRequestAnimationFrame ||
+                function (callback) {
+                    window.setTimeout(callback, 1000 / 60);
+                };
+        })();
+
+        var canvas = document.getElementsByTagName("canvas")[0];
+        var ctx = canvas.getContext("2d");
+
+        var counter = 0;
+        var particles = [];
+        var w = 400,
+            h = 200;
+        canvas.width = w;
+        canvas.height = h;
+
+        function reset() {
+            ctx.fillStyle = "#fafaf7";
+            ctx.fillRect(0, 0, w, h);
+
+            ctx.fillStyle = "#171814";
+            ctx.fillRect(25, 80, 350, 25);
+        }
+
+        function progressbar() {
+            this.widths = 0;
+            this.hue = 0;
+
+            this.draw = function () {
+                ctx.fillStyle = 'hsla(' + this.hue + ', 100%, 50%, 1)';
+                ctx.fillRect(25, 80, this.widths, 25);
+                var grad = ctx.createLinearGradient(0, 0, 0, 180);
+                grad.addColorStop(0, "transparent");
+                grad.addColorStop(1, "rgba(0,0,0,0.8)");
+                ctx.fillStyle = grad;
+                ctx.fillRect(25, 80, this.widths, 25);
+            }
+        }
+
+        function particle() {
+            this.x = 23 + bar.widths;
+            this.y = 82;
+
+            this.vx = 0.8 + Math.random() * 1;
+            this.v = Math.random() * 5;
+            this.g = 1 + Math.random() * 3;
+            this.down = false;
+
+            this.draw = function () {
+                ctx.fillStyle = 'hsla(' + (bar.hue + 0.5) + ', 100%, 40%, 1)';;
+                var size = Math.random() * 2;
+                ctx.fillRect(this.x, this.y, size, size);
+            }
+        }
+
+        bar = new progressbar();
+
+        function draw() {
+            reset();
+            counter++
+
+            bar.hue += 3;
+
+            bar.widths += 6;
+            if (bar.widths > 350) {
+                if (counter > 215) {
+                    reset();
+                    bar.hue = 0;
+                    bar.widths = 0;
+                    counter = 0;
+                    particles = [];
+                } else {
+                    bar.hue = 126;
+                    bar.widths = 351;
+                    bar.draw();
+                }
+            } else {
+                bar.draw();
+                for (var i = 0; i < particle_no; i += 10) {
+                    particles.push(new particle());
+                }
+            }
+            update();
+        }
+
+        function update() {
+            for (var i = 0; i < particles.length; i++) {
+                var p = particles[i];
+                p.x -= p.vx;
+                if (p.down == true) {
+                    p.g += 0.1;
+                    p.y += p.g;
+                } else {
+                    if (p.g < 0) {
+                        p.down = true;
+                        p.g += 0.1;
+                        p.y += p.g;
+                    } else {
+                        p.y -= p.g;
+                        p.g -= 0.1;
+                    }
+                }
+                p.draw();
+            }
+        }
+
+        function animloop() {
+            draw();
+            requestAnimFrame(animloop);
+        }
+
+        sleep = (milliseconds) => {
+            return new Promise(resolve => setTimeout(resolve, milliseconds))
+        }
+
+        animloop();
+
+        sleep(1000).then(() => {
+            $("#home-page").show();
+            $("#loading-canvas").hide();
+        })
+    </script>
+}

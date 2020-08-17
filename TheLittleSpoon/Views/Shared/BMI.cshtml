@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <script type="text/javascript" src="/js/materialize.min.js"></script>
+    @model TheLittleSpoon.Models.BMIFormData
+
+<div class="bmi-calculator text-center align-items-center" style="justify-content:center;align-self:center;display:grid">
+    <h1 class="display-2">BMI Calculator</h1>
+    <br />
+    <div class="row">
+        <form id="bmi-form" class="form" asp-controller="BMI" asp-action="BMI" method="post" onsubmit="return check_fields()">
+            <div class="row">
+                <div class="col"><input id="weight-input" asp-for="UserWeight" type="number" style="width:500px" class="form-control" placeholder="Enter Weigth (kg)"></div>
+                <div class="col"><input id="hiegth-input" asp-for="UserHieght" type="number" style="width:500px" class="form-control" placeholder="Enter Hiegth (cm)"></div>
+            </div>
+            <br />
+
+                <button class="btn btn-success" type="submit" name="action">
+                    Calculate
+                </button>
+
+        </form>
+    </div>
+    <br />
+    <br />
+    <br />
+    <div class="row" style="justify-content:center;align-self:center;display:grid">
+        @if (ViewBag.BmiResult != null && ViewBag.BmiDesc != null)
+        {
+            <div class="card" id="bmi-card">
+                <div class="card-body">
+                    <div class="card-content text-white">
+                        <h5 class="card-title"><u>BMI Results</u></h5>
+                        <h4 style="text-shadow: 3px 3px #000000"> Your BMI value is @ViewBag.BmiResult </h4>
+                        <h4 style="text-shadow: 3px 3px #000000"> Your result is @ViewBag.BmiDesc </h4>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+</body>
+</html>
+
+<script>
+    function check_fields() {
+        var w = document.forms["bmi-form"]["weight-input"];
+        var h = document.forms["bmi-form"]["hieght-input"];
+        if (w.value == "" || h.value == "") {
+            alert("Please enter weight and hieght");
+            return false;
+        }
+        return true;
+    }
+</script>

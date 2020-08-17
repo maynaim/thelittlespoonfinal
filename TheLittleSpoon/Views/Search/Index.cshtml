@@ -1,0 +1,143 @@
+@using Microsoft.AspNetCore.Identity
+@using TheLittleSpoon.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+
+@model Tuple<IEnumerable<Article>, IEnumerable<Comment>>
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<ul id="search-tabs" class="nav nav-tabs" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link" href="#articles" role="tab" data-toggle="tab" onclick="update_searched_results('articles')">articles</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#comments" role="tab" data-toggle="tab" onclick="update_searched_results('comments')">comments</a>
+    </li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane" id="articles">
+        <br />
+        <div class="row">
+            <div class="col-sm">
+                <select id="cat-input" name="CategoryId" class="form-control">
+                    <option value="">All</option>
+                    @foreach (var item in ViewBag.Categories)
+                    {
+                        <option value="@item.CategoryId">@item.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="col-sm">
+                <input id="title-input" type="text" class="form-control" placeholder="Title" />
+            </div>
+            <div class="col-sm">
+                <input id="summary-input" type="text" class="form-control" placeholder="Summary" />
+            </div>
+            <div class="col-sm">
+                <input id="articles-date-input" type="date" class="form-control" />
+            </div>
+            <input type="button" value="Search" class="btn btn-primary" onclick="update_searched_results('articles');" />
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="comments">
+        <br />
+        <div class="row">
+            <div class="col-sm">
+                <input id="author-input" type="text" class="form-control" placeholder="Author" />
+            </div>
+            <div class="col-sm">
+                <input id="content-input" type="text" class="form-control" placeholder="Content" />
+            </div>
+            <div class="col-sm">
+                <input id="comments-date-input" type="date" class="form-control" />
+            </div>
+            <input type="button" value="Search" class="btn btn-primary" onclick="update_searched_results('comments');" />
+        </div>
+    </div>
+
+    <br />
+    <div id="searched-results"></div>
+</div>
+
+@section Scripts
+    {
+    <script id="searchedArticlesTmpl" type="text/x-jQuery-tmpl">
+        <a href="#">${header}</a>
+        <br />
+    </script>
+
+    <script id="searchedCommentsTmpl" type="text/x-jQuery-tmpl">
+        <div class="media mb-1 border-bottom">
+            <div class="media-left">
+                <table class="comment-number-container mr-2">
+                    <tbody>
+                    <td class="align-middle text-center">#${sequence}</td>
+                    </tbody>
+                </table>
+            </div>
+            <div class="media-body">
+                <small style="font-family:'myFont'">${author}</small>
+                <p>${content}</p>
+            </div>
+
+            <a class="btn btn-success" href="/Articles/Details/${articleId}">Go</a>
+
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <button class="btn btn-danger" onclick="_delete_comment(${commentId})">X</button>
+            }
+
+        </div>
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Show articles by default
+            $('#search-tabs a[href="#articles"]').tab('show');
+            update_searched_results('articles');
+        });
+
+        var update_searched_results = function (type) {
+            $("#searched-results").html("");
+            if (type == 'articles') {
+                get_searched_articles(
+                    $('#cat-input').val(),
+                    $('#title-input').val(),
+                    $('#summary-input').val(),
+                    $('#articles-date-input').val()
+                ).then(function (articles) {
+                    $("#searched-results").html("");
+                    articles.forEach(article => {
+                        let a = "<a href='articles/details/" + article.articleId;
+                        a += "'>" + article.header + "</a></br>";
+                        $("#searched-results").append(a);
+                    })
+                })
+            }
+            else if (type == 'comments') {
+                get_searched_comments(
+                    $('#author-input').val(),
+                    $('#content-input').val(),
+                    $('#comments-date-input').val()
+                ).then(function (comments) {
+                    $("#searched-results").html("");
+                    comments.forEach(comment => {
+                        $("#searchedCommentsTmpl").tmpl(comment).appendTo("#searched-results");
+                    })
+                })
+            }
+        }
+
+        var _delete_comment = function (id) {
+            delete_comment(id).then(function () {
+                update_searched_results('comments');
+            })
+        }
+    </script>
+}

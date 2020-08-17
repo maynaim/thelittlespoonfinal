@@ -1,0 +1,288 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using TheLittleSpoon.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
+@model TheLittleSpoon.Models.Article
+
+@{
+    ViewData["Title"] = Model.Header;
+}
+
+<!-------------------------------HEADER--------------------------------->
+<div class="card flex-md-row mb-4 box-shadow h-md-250 text-light bg-dark shadow">
+    <div class="card-body d-flex flex-column align-items-start">
+        <strong class="d-inline-block mb-2 text-primary">
+            <partial name="_CategoryBadge" model="@Model.Category" />
+        </strong>
+        <h1 class="mb-0">@Model.Header</h1>
+        <small>@Html.DisplayFor(model => model.DateCreated)</small>
+        <small>@Html.DisplayFor(model => model.Location)</small>
+        <br />
+        <br />
+
+        <div class="btn-group" role="group" aria-label="...">
+            <div style="margin-right:5px">
+                <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button btn btn-sm" data-size="large" data-show-screen-name="false" data-show-count="false">Tweet</a>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <a asp-action="Edit" asp-route-id="@Model.ArticleId" class="btn btn-sm btn-outline-secondary">Edit</a>
+            }
+
+            <a href="/" class="btn btn-sm btn-outline-secondary">Home</a>
+        </div>
+
+    </div>
+    <a asp-controller="Articles" asp-action="Details" asp-route-id="@Model.ArticleId" style="background-color:black">
+        <img class="card-img-right flex-auto d-none d-md-block" style="width: 400px;" src="@Model.HomeImageUrl" data-holder-rendered="true" />
+    </a>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <!-------------------------------CONTENT--------------------------------->
+        <section>
+            <div class="border-bottom p-3">
+                <h4>@Model.Summary</h4>
+            </div>
+        </section>
+        </br>
+        <section>
+            <div id="ArticleContent" class="border-bottom">
+                @Model.Content
+            </div>
+        </section>
+        <!-------------------------------COMMENTS--------------------------------->
+        <section>
+            <div class="col-12">
+                <h3>Comments</h3>
+                <div class="border-bottom mb-2">
+                    <form id="newCommentForm">
+                        <div class="form-group form-group-sm">
+                            <input type="text" name="Author" class="form-control" placeholder="Who are you?" />
+                        </div>
+                        <div class="form-group form-group-sm">
+                            <textarea name="Content" class="form-control" rows="2" placeholder="And what do you think about this?"></textarea>
+                        </div>
+                        <div class="form-group form-group-sm">
+                            <input type="hidden" name="ArticleId" class="form-control" value="@Model.ArticleId" />
+                        </div>
+                        <div class="form-group form-group-sm">
+                            <button type="button" class="btn btn-success btn-sm mr-2" data-toggle="modal" data-target="#commentModal">Post it!</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-12">
+                    <small id="commentsCountLabel">
+                        Loading comments...
+                    </small>
+                    <div class="list-group" id="commentsList">
+                    </div>
+                </div>
+                <div id="result">
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="col-lg-4">
+        <aside>
+            <!-------------------------------SIDEBAR--------------------------------->
+            <div class="bs-example" data-example-id="default-media">
+
+                @if (Model.IsShowMap)
+                {
+                    <div class="pb-3 border-bottom">
+                        <h3>Location:  <span class="badge badge-secondary">@Model.Location</span></h3>
+                        <div class="media">
+                            <div class=" media-left">
+                                <div id="articleMap" class="img-thumbnail" style="width: 350px; height: 300px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <div class="mt-2">
+                    <h3>Related...</h3>
+                    <div class="related-articles-list" id="relatedArticlesList">
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+</div>
+
+<!-------------------------------COMMENTS--------------------------------->
+<div class="modal" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="commentModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="commentModalLabel">Are you sure?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">X</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to post this comment?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="post_comment()">Post comment!</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="errorCommentModal" tabindex="-1" role="dialog" aria-labelledby="errorCommentModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="errorCommentModalLabel">Error</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">X</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Content or author can't be empty!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts
+    {
+    <!-------------------------------TEMPLATES--------------------------------->
+    <script id="commentTemplate" type="text/x-jQuery-tmpl">
+        <div class="media mb-1 border-bottom">
+            <div class="media-left">
+                <table class="comment-number-container mr-2">
+                    <tbody>
+                    <td class="align-middle text-center">#${sequence}</td>
+                    </tbody>
+                </table>
+            </div>
+            <div class="media-body">
+                <small style="font-family:'myFont'">${author}</small>
+                <p>${content}</p>
+            </div>
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <button class="btn btn-danger" onclick="_delete_comment(${commentId})">X</button>
+            }
+
+        </div>
+    </script>
+
+    <script id="relatedArticleTemplate" type="text/x-jQuery-tmpl">
+        <div class="card">
+            <a asp-controller="Articles" asp-action="Details" asp-route-id="@Model.ArticleId">
+                <img class="card-img-top"
+                     style="height: 180px; width: 100%; display: block;"
+                     src="${homeImageUrl}"
+                     data-holder-rendered="true">
+            </a>
+            <div class="card-body">
+                <h5 class="card-title">${header}</h5>
+                <a class="btn btn-sm btn-outline-secondary" asp-controller="Articles" asp-action="MoveRelated"
+                   href="/Articles/MoveRelated/?prevId=@Model.ArticleId&newId=${articleId}">Read more...</a>
+            </div>
+        </div>
+    </script>
+
+    <!-------------------------------SCRIPTS--------------------------------->
+    <script async type="text/javascript">
+        $(document).ready(function () {
+            $("#ArticleContent").html(markdown_to_html("@Model.Content"));
+
+            load_markdown_tweeter()
+
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip();
+            });
+
+            update_related_articles()
+            update_comments()
+        })
+
+        var update_related_articles = function () {
+            var url = "/Articles/GetRelatedArticles/" + @Model.ArticleId;
+            $.getJSON(url, function (relatedArticles) {
+                relatedArticles.forEach(relatedArticle => {
+                    $("#relatedArticleTemplate").tmpl(relatedArticle).appendTo("#relatedArticlesList");
+                })
+            })
+        }
+
+        var post_comment = function () {
+            var data = $("#newCommentForm").serializeArray()
+
+            if (data[0].value == "" || data[1].value == "") {
+                $('#errorCommentModal').modal('show');
+            }
+
+            new_comment(data[0].value, data[1].value, data[2].value).then(function () {
+                update_comments()
+            });
+
+            console.log(data)
+        }
+
+        var _delete_comment = function (id) {
+            delete_comment(id).then(function () {
+                update_comments();
+            })
+        }
+
+        var update_comments = function () {
+            get_comments(@Model.ArticleId).then(function (comments) {
+                $("#commentsList").html("");
+                comments.forEach(comment => {
+                    $("#commentTemplate").tmpl(comment).appendTo("#commentsList");
+                    console.log(comment)
+                })
+                $("#commentsCountLabel").html(comments.length + " Comments")
+            })
+        }
+
+    </script>
+
+    @if (Model.IsShowMap)
+    {
+        <script type="text/javascript">
+            var map = null;
+
+            function LoadMap() {
+                map = new Microsoft.Maps.Map('#articleMap', {
+                    credentials: "AglcOvofpKm1X-WOXDY3_Cr0bxdAbKzUid-4bp7Em3BxbNPK_kT-X8iWI4B1RF0H",
+                    showMapTypeSelector: false,
+                    showZoomButtons: false,
+                    showLocateMeButton: false
+                });
+
+                Microsoft.Maps.loadModule('Microsoft.Maps.Search', function () {
+                    var searchManager = new Microsoft.Maps.Search.SearchManager(map);
+                    var requestOptions = {
+                        bounds: map.getBounds(),
+                        where: "@Model.Location",
+                        callback: function (answer, userData) {
+                            map.setView({ bounds: answer.results[0].bestView });
+                            map.entities.push(new Microsoft.Maps.Pushpin(answer.results[0].location))
+                        }
+                    };
+                    searchManager.geocode(requestOptions);
+                });
+            }
+
+        </script>
+        <script type="text/javascript" src="https://www.bing.com/api/maps/mapcontrol?callback=LoadMap" async defer></script>
+    }
+}

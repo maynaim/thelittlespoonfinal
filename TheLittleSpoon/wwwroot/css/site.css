@@ -1,0 +1,76 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+for details on configuring this project to bundle and minify static web assets. */
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
+
+.form-login {
+    background-color: #EDEDED;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 15px;
+    border-color: #d2d2d2;
+    border-width: 5px;
+    box-shadow: 0 1px 0 #cfcfcf;
+}
+
+#bmi-card {
+    width: 400px;
+    background-color: #303030;
+    border: 10px solid;
+    border-radius: 100px 100px;
+    border-color: slategrey;
+    transition: background-color 2s;
+}
+    #bmi-card:hover {
+        background-color:green;
+    }
+
+#about-div {
+    column-count: 3;
+    column-gap: 50px;
+    column-rule-style: solid;
+    column-rule-width: 1px;
+    column-rule-color:lawngreen;
+}
+
+@font-face {
+    font-family: 'myFont';
+    font-weight: bold;
+    font-style: normal;
+    src: url('https://rawgit.com/google/fonts/master/ufl/ubuntumono/UbuntuMono-Italic.ttf') format('truetype');
+}

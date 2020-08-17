@@ -1,0 +1,5 @@
+﻿@model TheLittleSpoon.Models.Category
+
+<a asp-controller="Categories" asp-action="Details" asp-route-id="@Model.CategoryId">
+    <span class="badge badge-secondary" style="background-color: @Model.HexColor">@Html.DisplayFor(model => model.Name)</span>
+</a>

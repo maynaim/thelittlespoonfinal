@@ -1,0 +1,35 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using TheLittleSpoon.Models
+
+@model TheLittleSpoon.Models.Category
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2 class="pb-3 mb-4 font-italic border-bottom" style="color: @Model.HexColor !important;"> @Model.Name </h2>
+
+<div>
+    <h4 class="text-dark">@Model.Description</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @foreach (Article article in (List<Article>)ViewData["Articles"])
+        {
+            <div class="row">
+                <partial name="_ArticleHorizontal" model="article" />
+            </div>
+        }
+
+    </dl>
+</div>
+<div>
+
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <a asp-action="Edit" asp-route-id="@Model.CategoryId">Edit</a>
+        <a asp-action="Index">Categories List</a>
+    }
+
+</div>
