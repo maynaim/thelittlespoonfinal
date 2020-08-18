@@ -4,7 +4,7 @@
 
 <br />
 <canvas id="loading-canvas" style="margin: auto; display: block"></canvas>
-<div id="home-page">
+<div id="home-page" style="background-color: lightcyan !important">
 
     <br />
     @{
@@ -12,20 +12,20 @@
         if (mainArticle != null)
         {
             <!--Main featured article-->
-            <div class="card flex-md-row mb-4 box-shadow h-md-250 text-light bg-dark shadow">
+            <div class="card flex-md-row mb-4 box-shadow h-md-250 text-light  shadow" style="background-color:darkturquoise !important">
                 <div class="card-body d-flex flex-column align-items-start">
                     <strong class="d-inline-block mb-2 text-primary">
                         <partial name="_CategoryBadge" model="@((Category)ViewData["MainArticleCategory"])" />
                     </strong>
                     <h3 class="mb-0">
-                        <a asp-controller="Articles" asp-action="Details" asp-route-id="@mainArticle.ArticleId" class="text-success">@mainArticle.Header</a>
+                        <a asp-controller="Articles" asp-action="Details" asp-route-id="@mainArticle.ArticleId" class="text-light">@mainArticle.Header</a>
                     </h3>
-                    <div class="mb-1 text-muted">@mainArticle.DateCreated</div>
+                    <div class="mb-1 text-light">@mainArticle.DateCreated</div>
                     <section class="main-article-content">
                         <p class="card-text mb-auto" style="column-span: all"><strong>@mainArticle.Summary</strong></p>
                     </section>
                     <br />
-                    <a class="btn btn-sm btn-outline-secondary" asp-controller="Articles" asp-action="Details" asp-route-id="@mainArticle.ArticleId">Read more</a>
+                    <a class="btn btn-lg btn-outline-light" asp-controller="Articles" asp-action="Details" asp-route-id="@mainArticle.ArticleId">Read more</a>
                 </div>
                 <a asp-controller="Articles" asp-action="Details" asp-route-id="@mainArticle.ArticleId">
                     <img class="card-img-right flex-auto d-none d-md-block" style="width: 550px; height: auto;" src="@mainArticle.HomeImageUrl" data-holder-rendered="true" />
@@ -42,7 +42,7 @@
 
                 <div class="col-12 col-sm-6 col-md-8">
 
-                    <div class="nav-scroller py-1 mb-2">
+                    <div class="nav-scroller py-1 mb-2" style="background-color:lightcyan !important">
                         <nav class="nav d-flex justify-content-between border rounded">
                             @foreach (var c in (Dictionary<Category, List<Article>>)ViewData["Categories"])
                             {
