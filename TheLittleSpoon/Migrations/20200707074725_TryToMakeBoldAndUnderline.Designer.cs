@@ -10,8 +10,8 @@ using TheLittleSpoon.Data;
 namespace TheLittleSpoon.Migrations
 {
     [DbContext(typeof(LittleSpoonDBContext))]
-    [Migration("20191013132658_SeedData")]
-    partial class SeedData
+    [Migration("20200707074725_TryToMakeBoldAndUnderline")]
+    partial class TryToMakeBoldAndUnderline
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -212,7 +212,7 @@ namespace TheLittleSpoon.Migrations
 
                     b.HasData(
                         new { ArticleId = 1, CategoryId = 1, Content = @"
-Ingredients:
+<u><b>Ingredients:</b></u>
 1) 2 ½ cups  warm water (600 mL)
 2) 1 teaspoon  sugar
 3) 2 teaspoons  active dry yeast
@@ -498,9 +498,9 @@ namespace TheLittleSpoon.Migrations
 
                     b.HasData(
                         new { CategoryId = 1, ColorARGB = -14513374, Description = "meravigliosa", Name = "Italian" },
-                        new { CategoryId = 2, ColorARGB = -984833, Description = "arigatō", Name = "Asian" },
-                        new { CategoryId = 3, ColorARGB = -2180985, Description = "majnun", Name = "Arabic" },
-                        new { CategoryId = 4, ColorARGB = -360334, Description = "adiós", Name = "Mexican" },
+                        new { CategoryId = 2, ColorARGB = -5952982, Description = "arigatō", Name = "Asian" },
+                        new { CategoryId = 3, ColorARGB = -8355840, Description = "majnun", Name = "Arabic" },
+                        new { CategoryId = 4, ColorARGB = -12490271, Description = "adiós", Name = "Mexican" },
                         new { CategoryId = 5, ColorARGB = -3730043, Description = "uncle sam", Name = "American" }
                     );
                 });

@@ -10,8 +10,8 @@ using TheLittleSpoon.Data;
 namespace TheLittleSpoon.Migrations
 {
     [DbContext(typeof(LittleSpoonDBContext))]
-    [Migration("20191013134856_ChangeCategoryColors3")]
-    partial class ChangeCategoryColors3
+    [Migration("20200707132658_SeedData")]
+    partial class SeedData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -498,9 +498,9 @@ namespace TheLittleSpoon.Migrations
 
                     b.HasData(
                         new { CategoryId = 1, ColorARGB = -14513374, Description = "meravigliosa", Name = "Italian" },
-                        new { CategoryId = 2, ColorARGB = -5952982, Description = "arigatō", Name = "Asian" },
-                        new { CategoryId = 3, ColorARGB = -8355840, Description = "majnun", Name = "Arabic" },
-                        new { CategoryId = 4, ColorARGB = -12490271, Description = "adiós", Name = "Mexican" },
+                        new { CategoryId = 2, ColorARGB = -984833, Description = "arigatō", Name = "Asian" },
+                        new { CategoryId = 3, ColorARGB = -2180985, Description = "majnun", Name = "Arabic" },
+                        new { CategoryId = 4, ColorARGB = -360334, Description = "adiós", Name = "Mexican" },
                         new { CategoryId = 5, ColorARGB = -3730043, Description = "uncle sam", Name = "American" }
                     );
                 });

@@ -10,8 +10,8 @@ using TheLittleSpoon.Data;
 namespace TheLittleSpoon.Migrations
 {
     [DbContext(typeof(LittleSpoonDBContext))]
-    [Migration("20191015190748_AddedAnotherArticle")]
-    partial class AddedAnotherArticle
+    [Migration("20200707155125_changeDates")]
+    partial class changeDates
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -270,7 +270,7 @@ namespace TheLittleSpoon.Migrations
 7) Bake the lasagna for 5 minutes more, until the cheese is bubbly and browned.
 
 
-", DateCreated = new DateTime(2020, 10, 11, 8, 10, 0, 0, DateTimeKind.Unspecified), Header = "Lasagna", HomeImageUrl = "https://www.seriouseats.com/recipes/images/2014/07/lasanga-bolognese-1500x1125.jpg", IsShowMap = true, Location = "Rome, Italy", Summary = "Half Pizza, Half Cake. The Best of Both Worlds!" },
+", DateCreated = new DateTime(2020, 5, 22, 8, 10, 0, 0, DateTimeKind.Unspecified), Header = "Lasagna", HomeImageUrl = "https://www.seriouseats.com/recipes/images/2014/07/lasanga-bolognese-1500x1125.jpg", IsShowMap = true, Location = "Rome, Italy", Summary = "Half Pizza, Half Cake. The Best of Both Worlds!" },
                         new { ArticleId = 3, CategoryId = 2, Content = @"
 <u><b>Ingredients:</b></u>
 1) 8 oz pad thai noodle, or noodles of your choice (250 g)
@@ -297,7 +297,7 @@ namespace TheLittleSpoon.Migrations
 8) Dish up and garnish with extra peanuts, green onions, and cilantro.
 
 
-", DateCreated = new DateTime(2020, 9, 21, 10, 30, 0, 0, DateTimeKind.Unspecified), Header = "Pad Thai", HomeImageUrl = "https://minimalistbaker.com/wp-content/uploads/2019/01/Easy-Vegan-Pad-Thai-SQUARE.jpg", IsShowMap = true, Location = "Bangkok, Thailand", Summary = "The Most Famous Thai Dish, In Less Than 30 Minutes" },
+", DateCreated = new DateTime(2020, 5, 22, 10, 30, 0, 0, DateTimeKind.Unspecified), Header = "Pad Thai", HomeImageUrl = "https://minimalistbaker.com/wp-content/uploads/2019/01/Easy-Vegan-Pad-Thai-SQUARE.jpg", IsShowMap = true, Location = "Bangkok, Thailand", Summary = "The Most Famous Thai Dish, In Less Than 30 Minutes" },
                         new { ArticleId = 4, CategoryId = 2, Content = @"
 <u><b>Ingredients:</b></u>
 1) 2 cups sushi rice (460 g), cooked
@@ -319,7 +319,7 @@ namespace TheLittleSpoon.Migrations
 6) Transfer the roll onto a cutting board. Rub a knife on a damp paper towel before slicing the roll into six equal portions.
 
 
-", DateCreated = new DateTime(2020, 1, 14, 22, 40, 0, 0, DateTimeKind.Unspecified), Header = "Sushi", HomeImageUrl = "https://img.bestrecipes.com.au/Gd8Mdexr/br/2017/05/cucumber-salmon-sushi-rolls-xlarge-ori-jpg-515020-1.jpg", IsShowMap = true, Location = "Tokyo, Japan", Summary = "The Famous California Roll, Easy and Delicious" },
+", DateCreated = new DateTime(2020, 5, 22, 22, 40, 0, 0, DateTimeKind.Unspecified), Header = "Sushi", HomeImageUrl = "https://img.bestrecipes.com.au/Gd8Mdexr/br/2017/05/cucumber-salmon-sushi-rolls-xlarge-ori-jpg-515020-1.jpg", IsShowMap = true, Location = "Tokyo, Japan", Summary = "The Famous California Roll, Easy and Delicious" },
                         new { ArticleId = 5, CategoryId = 3, Content = @"
 <u><b>Ingredients:</b></u>
 1) 15 oz garbanzo beans (425 g), 1 can, drained and rinsed
@@ -340,7 +340,7 @@ namespace TheLittleSpoon.Migrations
 4) Serve with your choice of dipping chips or veggies.
 
 
-", DateCreated = new DateTime(2020, 4, 2, 3, 55, 0, 0, DateTimeKind.Unspecified), Header = "Hummus", HomeImageUrl = "https://www.cookingclassy.com/wp-content/uploads/2014/03/hummus-31.jpg", IsShowMap = true, Location = "Jerusalem, Israel", Summary = "The Dip of The Gods" },
+", DateCreated = new DateTime(2020, 5, 22, 3, 55, 0, 0, DateTimeKind.Unspecified), Header = "Hummus", HomeImageUrl = "https://www.cookingclassy.com/wp-content/uploads/2014/03/hummus-31.jpg", IsShowMap = true, Location = "Jerusalem, Israel", Summary = "The Dip of The Gods" },
                         new { ArticleId = 6, CategoryId = 3, Content = @"
 <u><b>Ingredients:</b></u>
 1) 30 oz  cans of chickpeas, drained and rinsed (850 g)
@@ -365,7 +365,7 @@ namespace TheLittleSpoon.Migrations
 5) Serve the falafel as desired, either as a sandwich, salad topping, or over a bed of greens with a side of tahini sauce.
 
 
-", DateCreated = new DateTime(2020, 9, 28, 16, 25, 0, 0, DateTimeKind.Unspecified), Header = "Falafel", HomeImageUrl = "https://img.buzzfeed.com/thumbnailer-prod-us-east-1/5937e1569b514f058d91ace7cc976140/BFV37212_FalafelTwoWays_TastyVeg_v4_1.jpg", IsShowMap = true, Location = "Istanbul, Turkey", Summary = "Little Brown Balls of Happiness" },
+", DateCreated = new DateTime(2020, 1, 28, 16, 25, 0, 0, DateTimeKind.Unspecified), Header = "Falafel", HomeImageUrl = "https://img.buzzfeed.com/thumbnailer-prod-us-east-1/5937e1569b514f058d91ace7cc976140/BFV37212_FalafelTwoWays_TastyVeg_v4_1.jpg", IsShowMap = true, Location = "Istanbul, Turkey", Summary = "Little Brown Balls of Happiness" },
                         new { ArticleId = 7, CategoryId = 4, Content = @"
 <u><b>Ingredients:</b></u>
 1) all-purpose flour, for dusting
@@ -395,7 +395,7 @@ namespace TheLittleSpoon.Migrations
 8) Top the nachos with freshly grated Parmesan cheese and the basil, then serve.
 
 
-", DateCreated = new DateTime(2020, 9, 9, 18, 12, 0, 0, DateTimeKind.Unspecified), Header = "Nachos", HomeImageUrl = "https://thebusybaker.ca/wp-content/uploads/2017/12/rainbow-vegetable-skillet-nachos-fbig1.jpg", IsShowMap = true, Location = "Mexico City, Mexico", Summary = "Having People Over? Now You Have The Answer" },
+", DateCreated = new DateTime(2020, 3, 9, 18, 12, 0, 0, DateTimeKind.Unspecified), Header = "Nachos", HomeImageUrl = "https://thebusybaker.ca/wp-content/uploads/2017/12/rainbow-vegetable-skillet-nachos-fbig1.jpg", IsShowMap = true, Location = "Mexico City, Mexico", Summary = "Having People Over? Now You Have The Answer" },
                         new { ArticleId = 8, CategoryId = 4, Content = @"
 <u><b>Ingredients:</b></u>
 1) 1 cup  water (240 mL)
@@ -422,7 +422,7 @@ namespace TheLittleSpoon.Migrations
 9) Serve with melted chocolate if desired.
 
 
-", DateCreated = new DateTime(2020, 8, 19, 8, 5, 0, 0, DateTimeKind.Unspecified), Header = "Churros", HomeImageUrl = "https://bakingamoment.com/wp-content/uploads/2019/04/IMG_4307-how-to-make-churros.jpg", IsShowMap = true, Location = "Mexico City, Mexico", Summary = "Once You Try One, You Won't Be Able to Have Enough!" },
+", DateCreated = new DateTime(2020, 5, 22, 8, 5, 0, 0, DateTimeKind.Unspecified), Header = "Churros", HomeImageUrl = "https://bakingamoment.com/wp-content/uploads/2019/04/IMG_4307-how-to-make-churros.jpg", IsShowMap = true, Location = "Mexico City, Mexico", Summary = "Once You Try One, You Won't Be Able to Have Enough!" },
                         new { ArticleId = 9, CategoryId = 5, Content = @"
 <u><b>Ingredients:</b></u>
 1) 1 cup  water (240 mL)
@@ -449,7 +449,7 @@ namespace TheLittleSpoon.Migrations
 9) Serve with melted chocolate if desired.
 
 
-", DateCreated = new DateTime(2020, 6, 15, 14, 0, 0, 0, DateTimeKind.Unspecified), Header = "Potato Salad", HomeImageUrl = "https://hips.hearstapps.com/hmg-prod/images/190411-potato-salad-horizontal-1-1555688422.png", IsShowMap = true, Location = "Denver, Colorado, United States", Summary = "Don't Be Mistaken, These Aren't Just Mesahed Potatos" },
+", DateCreated = new DateTime(2020, 1, 28, 14, 0, 0, 0, DateTimeKind.Unspecified), Header = "Potato Salad", HomeImageUrl = "https://hips.hearstapps.com/hmg-prod/images/190411-potato-salad-horizontal-1-1555688422.png", IsShowMap = true, Location = "Denver, Colorado, United States", Summary = "Don't Be Mistaken, These Aren't Just Mesahed Potatos" },
                         new { ArticleId = 10, CategoryId = 5, Content = @"
 <u><b>Ingredients:</b></u>
 1) 1 cup  water (240 mL)
@@ -498,7 +498,7 @@ namespace TheLittleSpoon.Migrations
 5) Bake for 30–35 minutes, or until browned.
 
 
-", DateCreated = new DateTime(2020, 10, 15, 21, 30, 0, 0, DateTimeKind.Unspecified), Header = "Ravioli", HomeImageUrl = "https://i0.wp.com/kitchendocs.com/wp-content/uploads/2018/05/IMG_0344_1.jpg?resize=1170%2C878", IsShowMap = true, Location = "Milano, Italy", Summary = "Delicious Spinach Artichoke Bake, Yummy!" }
+", DateCreated = new DateTime(2020, 12, 15, 21, 30, 0, 0, DateTimeKind.Unspecified), Header = "Ravioli", HomeImageUrl = "https://i0.wp.com/kitchendocs.com/wp-content/uploads/2018/05/IMG_0344_1.jpg?resize=1170%2C878", IsShowMap = true, Location = "Milano, Italy", Summary = "Delicious Spinach Artichoke Bake, Yummy!" }
                     );
                 });
 

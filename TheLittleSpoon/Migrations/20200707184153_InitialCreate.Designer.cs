@@ -10,7 +10,7 @@ using TheLittleSpoon.Data;
 namespace TheLittleSpoon.Migrations
 {
     [DbContext(typeof(LittleSpoonDBContext))]
-    [Migration("20190901184153_InitialCreate")]
+    [Migration("20200707184153_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

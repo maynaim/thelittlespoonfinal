@@ -10,8 +10,8 @@ using TheLittleSpoon.Data;
 namespace TheLittleSpoon.Migrations
 {
     [DbContext(typeof(LittleSpoonDBContext))]
-    [Migration("20191015074725_TryToMakeBoldAndUnderline")]
-    partial class TryToMakeBoldAndUnderline
+    [Migration("20200707190748_AddedAnotherArticle")]
+    partial class AddedAnotherArticle
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -224,7 +224,7 @@ namespace TheLittleSpoon.Migrations
 
 
 
-Preparation:
+<u><b>Preparation:</b></u>
 1) “Bloom” the yeast by sprinkling the sugar and yeast in the warm water. Let sit for 10 minutes, until bubbles form on the surface.
 2) In a large bowl, combine the flour and salt. Make a well in the middle and add the olive oil and bloomed yeast mixture. Using a spoon, mix until a shaggy dough begins to form.
 3) Once the flour is mostly hydrated, turn the dough out onto a clean work surface and knead for 10-15 minutes. The dough should be soft, smooth, and bouncy. Form the dough into a taut round.
@@ -242,7 +242,7 @@ namespace TheLittleSpoon.Migrations
 
 ", DateCreated = new DateTime(2020, 10, 13, 15, 50, 0, 0, DateTimeKind.Unspecified), Header = "Pizza", HomeImageUrl = "https://cdn.vox-cdn.com/thumbor/Bw3NpqYaGgr_wAVVO6DFThLeX24=/0x0:2000x1333/1200x800/filters:focal(840x507:1160x827)/cdn.vox-cdn.com/uploads/chorus_image/image/64037689/Pizza_pepperoni_close.7.jpg", IsShowMap = true, Location = "Naples, Italy", Summary = "Wonderful Homemade Pizza Just Like in Italy" },
                         new { ArticleId = 2, CategoryId = 1, Content = @"
-Ingredients:
+<u><b>Ingredients:</b></u>
 1) 3 cups  whole milk ricotta cheese (750 g)
 2) 3 ½ cups  shredded low-moisture mozzarella, divided (350 g)
 3) 1 ½ cups  grated parmesan cheese, divided (165 g)
@@ -260,7 +260,7 @@ namespace TheLittleSpoon.Migrations
 
 
 
-Preparation:
+<u><b>Preparation:</b></u>
 1) Preheat the oven to 375˚F (190˚C).
 2) In a large bowl, mix together the ricotta, 2 cups (200 G) of mozzarella, 1 cup (110 G) of Parmesan, eggs, parsley and 1 teaspoon salt. Set aside.
 3) In a large pan, heat the olive oil over medium heat. Add the onion and sauté for 2-3 minutes, until translucent. Add the ground beef, breaking up with a wooden spoon. Stir in the garlic, Savory spice blend, and remaining 1½ teaspoons salt. Cook for 8 minutes, until the meat is no longer pink. Add 5 cups (1.3 Kilograms) of marinara sauce and stir to combine.
@@ -272,7 +272,7 @@ namespace TheLittleSpoon.Migrations
 
 ", DateCreated = new DateTime(2020, 10, 11, 8, 10, 0, 0, DateTimeKind.Unspecified), Header = "Lasagna", HomeImageUrl = "https://www.seriouseats.com/recipes/images/2014/07/lasanga-bolognese-1500x1125.jpg", IsShowMap = true, Location = "Rome, Italy", Summary = "Half Pizza, Half Cake. The Best of Both Worlds!" },
                         new { ArticleId = 3, CategoryId = 2, Content = @"
-Ingredients:
+<u><b>Ingredients:</b></u>
 1) 8 oz pad thai noodle, or noodles of your choice (250 g)
 2) 2 tablespoons sesame oil, divided
 3) 2 eggs
@@ -286,7 +286,7 @@ namespace TheLittleSpoon.Migrations
 
 
 
-Preparation:
+<u><b>Preparation:</b></u>
 1) Cook the noodles according to the package instructions.
 2) Toss with 1 tablespoon of sesame oil and set aside.
 3) Add ½ teaspoon of sesame oil to a pot with the lightly beaten eggs. When the eggs are finished cooking, set aside.
@@ -299,7 +299,7 @@ namespace TheLittleSpoon.Migrations
 
 ", DateCreated = new DateTime(2020, 9, 21, 10, 30, 0, 0, DateTimeKind.Unspecified), Header = "Pad Thai", HomeImageUrl = "https://minimalistbaker.com/wp-content/uploads/2019/01/Easy-Vegan-Pad-Thai-SQUARE.jpg", IsShowMap = true, Location = "Bangkok, Thailand", Summary = "The Most Famous Thai Dish, In Less Than 30 Minutes" },
                         new { ArticleId = 4, CategoryId = 2, Content = @"
-Ingredients:
+<u><b>Ingredients:</b></u>
 1) 2 cups sushi rice (460 g), cooked
 2) ¼ cup seasoned rice vinegar (60 mL)
 3) 4 half sheets sushi grade nori
@@ -310,7 +310,7 @@ namespace TheLittleSpoon.Migrations
 
 
 
-Preparation:
+<u><b>Preparation:</b></u>
 1) Season the sushi rice with the rice vinegar, fanning and stirring until room temperature.
 2) On a rolling mat, place one sheet of nori with the rough side facing upwards.
 3) Wet your hands and grab a handful of rice and place it on the nori. Spread the rice evenly throughout the nori without mashing the rice down. Season rice with a pinch of sesame seeds, if using, then flip it over so the nori is facing upwards.
@@ -321,7 +321,7 @@ namespace TheLittleSpoon.Migrations
 
 ", DateCreated = new DateTime(2020, 1, 14, 22, 40, 0, 0, DateTimeKind.Unspecified), Header = "Sushi", HomeImageUrl = "https://img.bestrecipes.com.au/Gd8Mdexr/br/2017/05/cucumber-salmon-sushi-rolls-xlarge-ori-jpg-515020-1.jpg", IsShowMap = true, Location = "Tokyo, Japan", Summary = "The Famous California Roll, Easy and Delicious" },
                         new { ArticleId = 5, CategoryId = 3, Content = @"
-Ingredients:
+<u><b>Ingredients:</b></u>
 1) 15 oz garbanzo beans (425 g), 1 can, drained and rinsed
 2) ½ teaspoon salt
 3) ½ teaspoon ground cumin
@@ -333,7 +333,7 @@ namespace TheLittleSpoon.Migrations
 
 
 
-Preparation:
+<u><b>Preparation:</b></u>
 1) Pour the rinsed chickpeas onto half the area of a kitchen towel. Fold the other half of the towel on top of the beans, and rub them so that the skins start to come off.
 2) Place all of the peeled beans in the bowl of a food processor, along with the salt, cumin, and garlic. Turn the processor on to break up the mixture.
 3) With the food processor running, pour in the lemon juice, olive oil, sesame oil, and water, and let the processor run until the mixture is smooth.
@@ -342,7 +342,7 @@ namespace TheLittleSpoon.Migrations
 
 ", DateCreated = new DateTime(2020, 4, 2, 3, 55, 0, 0, DateTimeKind.Unspecified), Header = "Hummus", HomeImageUrl = "https://www.cookingclassy.com/wp-content/uploads/2014/03/hummus-31.jpg", IsShowMap = true, Location = "Jerusalem, Israel", Summary = "The Dip of The Gods" },
                         new { ArticleId = 6, CategoryId = 3, Content = @"
-Ingredients:
+<u><b>Ingredients:</b></u>
 1) 30 oz  cans of chickpeas, drained and rinsed (850 g)
 2) 1 red onion, chopped
 3) ¼ cup  fresh parsley (10 g)
@@ -357,7 +357,7 @@ namespace TheLittleSpoon.Migrations
 
 
 
-Preparation:
+<u><b>Preparation:</b></u>
 1) To the bowl of a 2-quart (2 liter) food processor, add the chickpeas, onion, parsley, garlic, lemon juice, and spices. Pulse the ingredients together until just incorporated and they form a wet paste. Be careful not to overblend.
 2) Transfer the chickpea mixture to a large bowl and add the bread crumbs, mixing until just incorporated. Cover with plastic wrap and refrigerate for 1-2 hours, or overnight.
 3) Remove the chilled falafel mixture from the refrigerator and shape into 1-inch balls. The mixture should yield 18-20 balls.
@@ -367,7 +367,7 @@ namespace TheLittleSpoon.Migrations
 
 ", DateCreated = new DateTime(2020, 9, 28, 16, 25, 0, 0, DateTimeKind.Unspecified), Header = "Falafel", HomeImageUrl = "https://img.buzzfeed.com/thumbnailer-prod-us-east-1/5937e1569b514f058d91ace7cc976140/BFV37212_FalafelTwoWays_TastyVeg_v4_1.jpg", IsShowMap = true, Location = "Istanbul, Turkey", Summary = "Little Brown Balls of Happiness" },
                         new { ArticleId = 7, CategoryId = 4, Content = @"
-Ingredients:
+<u><b>Ingredients:</b></u>
 1) all-purpose flour, for dusting
 2) 14 oz  pizza dough (395 g)
 3) ¼ cup  olive oil (60 mL)
@@ -384,7 +384,7 @@ namespace TheLittleSpoon.Migrations
 
 
 
-Preparation:
+<u><b>Preparation:</b></u>
 1) Preheat the oven to 400˚F (200˚C). Line a baking sheet with parchment paper.
 2) Lightly flour a clean surface. Roll out the pizza dough and cut into 4 strips, then cut each strip into 8 triangles. Transfer the triangles to the prepared baking sheet.
 3) In a small bowl, whisk together the olive oil, oregano, garlic powder and crushed red pepper.
@@ -397,7 +397,7 @@ namespace TheLittleSpoon.Migrations
 
 ", DateCreated = new DateTime(2020, 9, 9, 18, 12, 0, 0, DateTimeKind.Unspecified), Header = "Nachos", HomeImageUrl = "https://thebusybaker.ca/wp-content/uploads/2017/12/rainbow-vegetable-skillet-nachos-fbig1.jpg", IsShowMap = true, Location = "Mexico City, Mexico", Summary = "Having People Over? Now You Have The Answer" },
                         new { ArticleId = 8, CategoryId = 4, Content = @"
-Ingredients:
+<u><b>Ingredients:</b></u>
 1) 1 cup  water (240 mL)
 2) ⅓ cup  butter (75 g)
 3) 2 tablespoons  brown sugar
@@ -410,7 +410,7 @@ namespace TheLittleSpoon.Migrations
 
 
 
-Preparation:
+<u><b>Preparation:</b></u>
 1) Preheat oven to 350°F (180˚C).
 2) In a saucepan over medium heat, melt the butter and brown sugar in the water and bring to a boil.
 3) Turn off the heat and stir in the flour.
@@ -424,7 +424,7 @@ namespace TheLittleSpoon.Migrations
 
 ", DateCreated = new DateTime(2020, 8, 19, 8, 5, 0, 0, DateTimeKind.Unspecified), Header = "Churros", HomeImageUrl = "https://bakingamoment.com/wp-content/uploads/2019/04/IMG_4307-how-to-make-churros.jpg", IsShowMap = true, Location = "Mexico City, Mexico", Summary = "Once You Try One, You Won't Be Able to Have Enough!" },
                         new { ArticleId = 9, CategoryId = 5, Content = @"
-Ingredients:
+<u><b>Ingredients:</b></u>
 1) 1 cup  water (240 mL)
 2) ⅓ cup  butter (75 g)
 3) 2 tablespoons  brown sugar
@@ -437,7 +437,7 @@ namespace TheLittleSpoon.Migrations
 
 
 
-Preparation:
+<u><b>Preparation:</b></u>
 1) Preheat oven to 350°F (180˚C).
 2) In a saucepan over medium heat, melt the butter and brown sugar in the water and bring to a boil.
 3) Turn off the heat and stir in the flour.
@@ -451,7 +451,7 @@ namespace TheLittleSpoon.Migrations
 
 ", DateCreated = new DateTime(2020, 6, 15, 14, 0, 0, 0, DateTimeKind.Unspecified), Header = "Potato Salad", HomeImageUrl = "https://hips.hearstapps.com/hmg-prod/images/190411-potato-salad-horizontal-1-1555688422.png", IsShowMap = true, Location = "Denver, Colorado, United States", Summary = "Don't Be Mistaken, These Aren't Just Mesahed Potatos" },
                         new { ArticleId = 10, CategoryId = 5, Content = @"
-Ingredients:
+<u><b>Ingredients:</b></u>
 1) 1 cup  water (240 mL)
 2) ⅓ cup  butter (75 g)
 3) 2 tablespoons  brown sugar
@@ -464,7 +464,7 @@ namespace TheLittleSpoon.Migrations
 
 
 
-Preparation:
+<u><b>Preparation:</b></u>
 1) Preheat oven to 350°F (180˚C).
 2) In a saucepan over medium heat, melt the butter and brown sugar in the water and bring to a boil.
 3) Turn off the heat and stir in the flour.
@@ -476,7 +476,29 @@ namespace TheLittleSpoon.Migrations
 9) Serve with melted chocolate if desired.
 
 
-", DateCreated = new DateTime(2020, 5, 22, 20, 30, 0, 0, DateTimeKind.Unspecified), Header = "Apple Pie", HomeImageUrl = "https://cdn3.tmbi.com/toh/GoogleImagesPostCard/exps6086_HB133235C07_19_4b_WEB.jpg", IsShowMap = true, Location = "New York, New York, United Stated", Summary = "Can You Really Get More American Than Apple Pie?" }
+", DateCreated = new DateTime(2020, 5, 22, 20, 30, 0, 0, DateTimeKind.Unspecified), Header = "Apple Pie", HomeImageUrl = "https://cdn3.tmbi.com/toh/GoogleImagesPostCard/exps6086_HB133235C07_19_4b_WEB.jpg", IsShowMap = true, Location = "New York, New York, United Stated", Summary = "Can You Really Get More American Than Apple Pie?" },
+                        new { ArticleId = 11, CategoryId = 1, Content = @"
+<u><b>Ingredients:</b></u>
+1) 8 oz cream cheese (225 g)
+2) 1 ½ cups shredded mozzarella cheese (150 g)
+3) 5 oz spinach (25 g), cooked and chopped
+4) 16 oz artichoke heart (455 g)
+5) ½ cup grated parmesan cheese (55 g)
+6) ¾ cup sour cream (170 g)
+7) 1 cup milk (240 mL)
+8) 20 oz frozen ravioli (570 g)
+
+
+
+<u><b>Preparation:</b></u>
+1) Preheat the oven to 375ºF (190ºC).
+2) In a large bowl, mix together the cream cheese, mozzarella, spinach, artichoke hearts, Parmesan cheese, sour cream, and milk.
+3) Pour a third of the spinach artichoke mixture in a large glass baking dish and spread it evenly over the bottom.
+4) Line the tray with half of the frozen ravioli, spread more sauce over the top, then add the rest of the ravioli and cover with the remaining sauce.
+5) Bake for 30–35 minutes, or until browned.
+
+
+", DateCreated = new DateTime(2020, 10, 15, 21, 30, 0, 0, DateTimeKind.Unspecified), Header = "Ravioli", HomeImageUrl = "https://i0.wp.com/kitchendocs.com/wp-content/uploads/2018/05/IMG_0344_1.jpg?resize=1170%2C878", IsShowMap = true, Location = "Milano, Italy", Summary = "Delicious Spinach Artichoke Bake, Yummy!" }
                     );
                 });
 
